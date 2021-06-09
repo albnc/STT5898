@@ -3,35 +3,47 @@
 #' subtitle: "Aula 2"
 #' author: "Prof. André Luiz Cunha"
 #' date: "21/05/2021"
+#' header-includes: 
+#' - \usepackage{caption}
+#' - \usepackage[portuguese]{babel}
 #' output:
 #'   pdf_document:
 #'     keep_tex: true
 #'     number_sections: true
 #' ---
 #'
+
+#+ setup, include=FALSE
+knitr::opts_chunk$set(echo=TRUE, fig.height = 4)
+
 #' # Transformação de escala
 #' Um passo importante de qualquer análise de dados é a uniformização do intervalo de dados,
 #' de modo que todas as variáveis do banco de dados tenham o mesmo intervalo de variação. 
-#' Na literatura temos dois tipos de transformação
 #' 
+#' Seja o exemplo do conjunto de dados aleatório abaixo, são apresentados dois tipos de 
+#' transformação encontrados na literatura.
 
 # Conjunto de valores aleatórios com média 50 e desvio 15.
 (x <- rnorm(100, 50, 15))
 summary(x)
 
 #' ## Normalização [0,1]
+#' A normalização transforma os dados no intervalo entre 0 e 1.
+#' 
 x_norm <- (x - min(x)) / (max(x) - min(x))
 summary(x_norm)
 
 #' ## Padronizar [-3,3]
-x_pad <- (x - mean(x)) / sd(x)
-summary(x_pad)
-
 #' A padronização dos dados nada mais é do que a transformação para a escala da curva
 #' normal padrão (z-padrão). Vide Figura 1 a tabela z-padrão.
 #' 
-#' ![Tabela Z-padrão](normal-table.png)
-#' 
+x_pad <- (x - mean(x)) / sd(x)
+summary(x_pad)
+
+#+ ztable, echo=FALSE, fig.cap='Tabela z-padrão', fig.align='center', out.width = '60%'
+knitr::include_graphics("normal-table.png")
+
+#+ echo=TRUE
 ## OLHANDO A TABELA
 #z = 1,0 ----> p(z) = 0,1587
 1 - 2 * 0.1587
@@ -52,6 +64,7 @@ summary(x_pad)
 runif(10)
 runif(10, 100, 150)
 
+hist(runif(10000))
 
 ## Normalmente distribuídos
 #' Função: `rnorm(n, mean, sd)`
@@ -59,21 +72,25 @@ runif(10, 100, 150)
 rnorm(10)
 rnorm(10, 100, 15)
 
+hist(rnorm(10000), breaks = seq(-5,5,.1),
+     freq = FALSE)
+
+
 #' ## Distribuição Normal
 #' Encontrando o valor z-padrão com a função `qnorm(area da curva, mean=0, sd=1)`
 #' 
-#' - Unicaudal a esquerda: $z_\alpha = qnorm(\alpha)$
-#' - Unicaudal a direita: $z_\alpha = qnorm(1 - \alpha)$
-#' - Bicaudal: $z_frac{\alpha}{2} = qnorm(1 - \alpha/2)$
+#' - Unicaudal a esquerda: `z_alpha = qnorm(alpha)`
+#' - Unicaudal a direita: `z_alpha = qnorm(1 - alpha)`
+#' - Bicaudal: `z_alpha/2 = qnorm(1 - alpha/2)`
 
 qnorm(.90)
 qnorm(.5)
 
 #' Encontrando o p-valor com a função `pnorm(valor z, mean=0, sd=1)`
 #' 
-#' - Unicaudal a esquerda: $p-value = pnorm(z, lower.tail=TRUE)$
-#' - Unicaudal a direita: $p-value = pnorm(z, lower.tail=FALSE)$
-#' - Bicaudal: $p-value = 2 * pnorm(abs(z), lower.tail=FALSE)$
+#' - Unicaudal a esquerda: `p-value = pnorm(z, lower.tail=TRUE)`
+#' - Unicaudal a direita: `p-value = pnorm(z, lower.tail=FALSE)`
+#' - Bicaudal: `p-value = 2 * pnorm(abs(z), lower.tail=FALSE)`
 
 pnorm(1.96)
 pnorm(1.96, lower.tail = FALSE)
@@ -97,14 +114,6 @@ pnorm(1.65)
 pnorm(1.7) - pnorm(1.4)
 
 
-#' ## Histogramas
-#+ fig.width=5
-hist(runif(10000))
-
-#+ fig.width=5
-hist(rnorm(10000), breaks = seq(-5,5,.1),
-     freq = FALSE)
-
 #' **EXEMPLO 2**
 x = c(58,78,84,90,97,70,
       90,86,82,59,90,70,
@@ -117,7 +126,6 @@ x = c(58,78,84,90,97,70,
 ## Análise descritiva
 summary(x)
 
-#+ fig.width=5
 hdados <- hist(x, 
                breaks = seq(40,140,10))
 
@@ -140,8 +148,27 @@ sum(hdados$density) * 10
 x_pad <- (x - mean(x))/sd(x)
 
 #' ## Qui-quadrado
-#' 
-chisq.test(x, rnorm(36, mean(x), sd(x)) )
+#' Teste de aderência de Qui-quadrado é usado para compara distribuições observadas com 
+#' distribuições esperadas em dados discretos (histogramas de frequências). 
+
+## Densidade dos valores X com a curva normal teórica
+bin <- 10
+hist.real <- hist(x, breaks = seq(40,140,bin), freq=FALSE)
+curve(dnorm(x, mean(x), sd(x)), col='darkblue', lw=2, add=TRUE)
+
+hist.real$density
+hist.real$counts
+
+## Frequências das distribuições observadas e esperadas
+barplot(rbind(hist.real$counts, dnorm(hist.real$mids, mean(x), sd(x))*bin*length(x) ),
+        names.arg = hist.real$mids,
+        col = c("darkblue", "red"),
+        beside = TRUE
+)
+
+chisq.test(hist.real$counts, # Frequência observada - dados originais
+           p = dnorm(hist.real$mids, mean(x), sd(x))*bin, # Frequência teórica - distribuição normal
+           rescale.p = TRUE ) 
 
 #' ## Kolmogorv-Smirnov (KS)
 #' 

@@ -100,6 +100,8 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
+\usepackage{caption}
+\usepackage[portuguese]{babel}
 \ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -123,8 +125,10 @@
 
 Um passo importante de qualquer análise de dados é a uniformização do
 intervalo de dados, de modo que todas as variáveis do banco de dados
-tenham o mesmo intervalo de variação. Na literatura temos dois tipos de
-transformação
+tenham o mesmo intervalo de variação.
+
+Seja o exemplo do conjunto de dados aleatório abaixo, são apresentados
+dois tipos de transformação encontrados na literatura.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -134,19 +138,19 @@ transformação
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 81.95492 63.70145 59.84402 29.03614 36.83837 52.31954 47.48039 16.96690
-##   [9] 79.02751 42.22281 49.93790 72.16353 32.75996 62.75825 62.04287 34.34612
-##  [17] 56.74150 22.51613 38.40618 41.54669 46.13155 35.90177 62.68782 56.70538
-##  [25] 64.97357 47.59002 51.65478 63.96517 39.68162 31.25627 88.35457 19.24039
-##  [33] 58.89939 61.81595 34.87505 68.15630 34.21176 47.18986 63.18132 36.26722
-##  [41] 47.71326 56.51160 66.98419 49.05309 64.77358 45.82890 62.42944 43.79950
-##  [49] 26.60777 54.16811 76.10061 44.60954 60.52618 15.77870 65.35911 96.65488
-##  [57] 53.61846 54.65751 38.53526 82.34462 52.68212 60.41166 69.38666 46.06130
-##  [65] 47.40419 61.44111 40.32041 51.39102 78.02165 59.96898 50.18075 54.75996
-##  [73] 81.92924 45.55012 42.18383 62.26823 62.06747 70.70899 29.05432 38.32979
-##  [81] 59.46730 31.51399 43.59235 47.96043 40.52407 35.08822 43.51377 40.17733
-##  [89] 43.41403 84.55618 45.04116 40.96168 59.59239 38.38171 49.40163 40.94027
-##  [97] 59.01125 47.68123 50.32989 52.94093
+##   [1] 67.38209 44.36467 53.80939 41.33888 51.60008 54.31530 61.89694 45.33601
+##   [9] 60.76003 65.07051 40.53391 35.18354 55.74108 54.07982 36.79692 55.87327
+##  [17] 32.93785 37.29865 46.96603 37.63343 53.79591 37.12693 52.32424 43.21072
+##  [25] 53.20274 27.54581 52.22474 38.83846 57.11614 68.78142 54.43861 49.09645
+##  [33] 19.13876 59.21151 49.28278 50.96855 76.42924 62.61803 65.64291 38.92497
+##  [41] 63.61846 53.22992 48.17272 41.52407 42.59956 26.12273 37.13655 36.17765
+##  [49] 27.79757 48.58399 19.93381 41.39033 22.66142 65.34623 74.32932 64.87410
+##  [57] 61.96386 70.37860 34.95970 49.56880 63.71918 37.05237 60.04204 62.99392
+##  [65] 63.36854 26.33910 60.65801 43.19757 44.96063 45.94747 29.23396 42.26117
+##  [73] 57.44031 52.76061 69.90471 29.75177 46.80179 60.51939 74.13881 43.52736
+##  [81] 80.58713 56.49009 59.40942 44.13878 35.62000 37.41026 44.42762 62.02210
+##  [89] 50.20614 27.40463 36.73793 40.95965 35.47438 38.82704 31.44681 27.83082
+##  [97] 43.80613 19.71721 24.16069 53.54825
 \end{verbatim}
 
 \begin{Shaded}
@@ -157,11 +161,13 @@ transformação
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   15.78   40.84   50.06   51.60   62.05   96.65
+##   19.14   37.26   47.57   47.84   59.26   80.59
 \end{verbatim}
 
 \hypertarget{normalizauxe7uxe3o-01}{%
 \subsection{Normalização {[}0,1{]}}\label{normalizauxe7uxe3o-01}}
+
+A normalização transforma os dados no intervalo entre 0 e 1.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -172,11 +178,15 @@ transformação
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.0000  0.3098  0.4239  0.4429  0.5721  1.0000
+##  0.0000  0.2949  0.4627  0.4671  0.6529  1.0000
 \end{verbatim}
 
 \hypertarget{padronizar--33}{%
 \subsection{Padronizar {[}-3,3{]}}\label{padronizar--33}}
+
+A padronização dos dados nada mais é do que a transformação para a
+escala da curva normal padrão (z-padrão). Vide Figura 1 a tabela
+z-padrão.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -187,17 +197,16 @@ transformação
 
 \begin{verbatim}
 ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -2.26265 -0.67973 -0.09709  0.00000  0.66033  2.84644
+## -2.04903 -0.75548 -0.01936  0.00000  0.81531  2.33780
 \end{verbatim}
 
-A padronização dos dados nada mais é do que a transformação para a
-escala da curva normal padrão (z-padrão). Vide Figura 1 a tabela
-z-padrão.
-
 \begin{figure}
-\centering
-\includegraphics{normal-table.png}
-\caption{Tabela Z-padrão}
+
+{\centering \includegraphics[width=0.6\linewidth]{normal-table} 
+
+}
+
+\caption{Tabela z-padrão}\label{fig:ztable}
 \end{figure}
 
 \begin{Shaded}
@@ -266,8 +275,8 @@ Função: \texttt{runif(n,\ min,\ max)}
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 0.7446925 0.5346661 0.5412608 0.4029396 0.9155983 0.5955964 0.5216851
-##  [8] 0.0957525 0.4979599 0.4498968
+##  [1] 0.2921710 0.1243811 0.7045777 0.9484180 0.5995654 0.8572610 0.9077824
+##  [8] 0.5266294 0.4437137 0.8350196
 \end{verbatim}
 
 \begin{Shaded}
@@ -277,9 +286,17 @@ Função: \texttt{runif(n,\ min,\ max)}
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 108.4437 120.4169 133.6860 123.8815 128.2571 121.4598 101.1226 111.9532
-##  [9] 128.4889 106.8365
+##  [1] 137.2926 117.7441 118.1983 144.7208 142.3846 146.1939 135.9226 116.5154
+##  [9] 117.0558 133.1327
 \end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{runif}\NormalTok{(}\DecValTok{10000}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DistNormal_files/figure-latex/unnamed-chunk-6-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -296,8 +313,8 @@ Função: \texttt{rnorm(n,\ mean,\ sd)}
 \end{Shaded}
 
 \begin{verbatim}
-##  [1]  0.519541457 -0.637647229 -0.446732105 -0.428468526  0.009846958
-##  [6]  1.320150538  0.015717242 -1.107154262 -0.846468565 -0.956322799
+##  [1]  0.01682654  0.51782051 -0.52881088  0.31302410 -0.72271552  0.38712121
+##  [7]  0.40100879  0.87852581  1.70679692 -2.34912372
 \end{verbatim}
 
 \begin{Shaded}
@@ -307,9 +324,18 @@ Função: \texttt{rnorm(n,\ mean,\ sd)}
 \end{Shaded}
 
 \begin{verbatim}
-##  [1]  87.81023 100.38945 100.87788 115.11102 116.57867 125.59136 102.83233
-##  [8] 130.02110 100.60110 112.35421
+##  [1] 103.13431  94.11965  92.94349 104.12939  88.03196  95.35177 104.54607
+##  [8] 102.47912 103.32911  85.33530
 \end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{), }\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{,.}\DecValTok{1}\NormalTok{),}
+     \AttributeTok{freq =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DistNormal_files/figure-latex/unnamed-chunk-7-1.pdf}
 
 \hypertarget{distribuiuxe7uxe3o-normal}{%
 \subsection{Distribuição Normal}\label{distribuiuxe7uxe3o-normal}}
@@ -320,11 +346,11 @@ Encontrando o valor z-padrão com a função
 \begin{itemize}
 \tightlist
 \item
-  Unicaudal a esquerda: \(z_\alpha = qnorm(\alpha)\)
+  Unicaudal a esquerda: \texttt{z\_alpha\ =\ qnorm(alpha)}
 \item
-  Unicaudal a direita: \(z_\alpha = qnorm(1 - \alpha)\)
+  Unicaudal a direita: \texttt{z\_alpha\ =\ qnorm(1\ -\ alpha)}
 \item
-  Bicaudal: \(z_frac{\alpha}{2} = qnorm(1 - \alpha/2)\)
+  Bicaudal: \texttt{z\_alpha/2\ =\ qnorm(1\ -\ alpha/2)}
 \end{itemize}
 
 \begin{Shaded}
@@ -353,11 +379,11 @@ Encontrando o p-valor com a função
 \begin{itemize}
 \tightlist
 \item
-  Unicaudal a esquerda: \(p-value = pnorm(z, lower.tail=TRUE)\)
+  Unicaudal a esquerda: \texttt{p-value\ =\ pnorm(z,\ lower.tail=TRUE)}
 \item
-  Unicaudal a direita: \(p-value = pnorm(z, lower.tail=FALSE)\)
+  Unicaudal a direita: \texttt{p-value\ =\ pnorm(z,\ lower.tail=FALSE)}
 \item
-  Bicaudal: \(p-value = 2 * pnorm(abs(z), lower.tail=FALSE)\)
+  Bicaudal: \texttt{p-value\ =\ 2\ *\ pnorm(abs(z),\ lower.tail=FALSE)}
 \end{itemize}
 
 \begin{Shaded}
@@ -458,26 +484,6 @@ Encontrando a densidade do valor com a função
 ## [1] 0.0361912
 \end{verbatim}
 
-\hypertarget{histogramas}{%
-\subsection{Histogramas}\label{histogramas}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{hist}\NormalTok{(}\FunctionTok{runif}\NormalTok{(}\DecValTok{10000}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{DistNormal_files/figure-latex/unnamed-chunk-12-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{hist}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{), }\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{,.}\DecValTok{1}\NormalTok{),}
-     \AttributeTok{freq =} \ConstantTok{FALSE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{DistNormal_files/figure-latex/unnamed-chunk-13-1.pdf}
-
 \textbf{EXEMPLO 2}
 
 \begin{Shaded}
@@ -507,7 +513,7 @@ Encontrando a densidade do valor com a função
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{DistNormal_files/figure-latex/unnamed-chunk-15-1.pdf}
+\includegraphics{DistNormal_files/figure-latex/unnamed-chunk-12-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -582,27 +588,78 @@ será de 100\%.
 \hypertarget{qui-quadrado}{%
 \subsection{Qui-quadrado}\label{qui-quadrado}}
 
+Teste de aderência de Qui-quadrado é usado para compara distribuições
+observadas com distribuições esperadas em dados discretos (histogramas
+de frequências).
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{chisq.test}\NormalTok{(x, }\FunctionTok{rnorm}\NormalTok{(}\DecValTok{36}\NormalTok{, }\FunctionTok{mean}\NormalTok{(x), }\FunctionTok{sd}\NormalTok{(x)) )}
+\DocumentationTok{\#\# Densidade dos valores X com a curva normal teórica}
+\NormalTok{bin }\OtherTok{\textless{}{-}} \DecValTok{10}
+\NormalTok{hist.real }\OtherTok{\textless{}{-}} \FunctionTok{hist}\NormalTok{(x, }\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{40}\NormalTok{,}\DecValTok{140}\NormalTok{,bin), }\AttributeTok{freq=}\ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{curve}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(x, }\FunctionTok{mean}\NormalTok{(x), }\FunctionTok{sd}\NormalTok{(x)), }\AttributeTok{col=}\StringTok{\textquotesingle{}darkblue\textquotesingle{}}\NormalTok{, }\AttributeTok{lw=}\DecValTok{2}\NormalTok{, }\AttributeTok{add=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DistNormal_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist.real}\SpecialCharTok{$}\NormalTok{density}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Warning in chisq.test(x, rnorm(36, mean(x), sd(x))): Chi-squared approximation
-## may be incorrect
+##  [1] 0.000000000 0.005555556 0.022222222 0.016666667 0.033333333 0.013888889
+##  [7] 0.005555556 0.002777778 0.000000000 0.000000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hist.real}\SpecialCharTok{$}\NormalTok{counts}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  0  2  8  6 12  5  2  1  0  0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Frequências das distribuições observadas e esperadas}
+\FunctionTok{barplot}\NormalTok{(}\FunctionTok{rbind}\NormalTok{(hist.real}\SpecialCharTok{$}\NormalTok{counts, }\FunctionTok{dnorm}\NormalTok{(hist.real}\SpecialCharTok{$}\NormalTok{mids, }\FunctionTok{mean}\NormalTok{(x), }\FunctionTok{sd}\NormalTok{(x))}\SpecialCharTok{*}\NormalTok{bin}\SpecialCharTok{*}\FunctionTok{length}\NormalTok{(x) ),}
+        \AttributeTok{names.arg =}\NormalTok{ hist.real}\SpecialCharTok{$}\NormalTok{mids,}
+        \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"darkblue"}\NormalTok{, }\StringTok{"red"}\NormalTok{),}
+        \AttributeTok{beside =} \ConstantTok{TRUE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DistNormal_files/figure-latex/unnamed-chunk-16-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{chisq.test}\NormalTok{(hist.real}\SpecialCharTok{$}\NormalTok{counts, }\CommentTok{\# Frequência observada {-} dados originais}
+           \AttributeTok{p =} \FunctionTok{dnorm}\NormalTok{(hist.real}\SpecialCharTok{$}\NormalTok{mids, }\FunctionTok{mean}\NormalTok{(x), }\FunctionTok{sd}\NormalTok{(x))}\SpecialCharTok{*}\NormalTok{bin, }\CommentTok{\# Frequência teórica {-} distribuição normal}
+           \AttributeTok{rescale.p =} \ConstantTok{TRUE}\NormalTok{ ) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in chisq.test(hist.real$counts, p = dnorm(hist.real$mids, mean(x), :
+## Chi-squared approximation may be incorrect
 \end{verbatim}
 
 \begin{verbatim}
 ## 
-##  Pearson's Chi-squared test
+##  Chi-squared test for given probabilities
 ## 
-## data:  x and rnorm(36, mean(x), sd(x))
-## X-squared = 792, df = 770, p-value = 0.2836
+## data:  hist.real$counts
+## X-squared = 5.7035, df = 9, p-value = 0.7692
 \end{verbatim}
 
-\hypertarget{kolomogorv-smirnof}{%
-\subsection{Kolomogorv-Smirnof}\label{kolomogorv-smirnof}}
+\hypertarget{kolmogorv-smirnov-ks}{%
+\subsection{Kolmogorv-Smirnov (KS)}\label{kolmogorv-smirnov-ks}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -644,8 +701,8 @@ será de 100\%.
 ## alternative hypothesis: two-sided
 \end{verbatim}
 
-\hypertarget{shapiro}{%
-\subsection{Shapiro}\label{shapiro}}
+\hypertarget{shapiro-wilk}{%
+\subsection{Shapiro-Wilk}\label{shapiro-wilk}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
