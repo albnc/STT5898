@@ -20,41 +20,6 @@ knitr::opts_chunk$set(echo=TRUE, fig.height = 4)
 ```
 
 
-# Potência do Teste
-
-A potência do teste é a probabilidade de rejeitar a hipótese nula quando, de fato, ela é nula.
-
-```{r image, echo=FALSE, fig.cap="Potência Estatística", out.width='80%', fig.align='center'}
-knitr::include_graphics("powertest.png")
-
-```
-Fonte: [link_imagem](https://www.researchgate.net/profile/Abdulkerim-Gok/publication/316927316/figure/fig3/AS:667699772391428@1536203439714/Left-Definitions-of-terminologies-in-a-statistical-test-Right-An-illustration-of-power.ppm)
-
-```{r power-stat}
-## Normal test
-## POPULAÇÃO
-mu = 100
-sd = 4
-
-## AMOSTRA
-n = 10
-avg = 102
-avgerr = sd / sqrt(n)
-
-## TESTE
-alpha = .05
-tails = 1
-zp = qnorm(alpha/tails, mean = mu, sd = avgerr, lower.tail = FALSE )
-  
-beta = pnorm(zp, avg, avgerr)
-(power = 1 - beta)
-
-## T-Student test
-power.t.test(n = n, delta = avgerr, sd = sd, sig.level = alpha, alternative = "two.sided")
-power.t.test(power = .60, delta = .5, sd=2, sig.level = .1, alternative = "one.sided")
-```
-
-
 ## EXEMPLO 1{-}
 
 Qual o limite da influência de placa regulamentação na velocidade dos automóveis, sabe-se: $\mu = 100~km/h$, $\sigma^2 = 64$ e $n = 12$. Adote $\alpha = 5%$.
@@ -76,8 +41,44 @@ hist(rnorm(n, mean = mu, sd = sqrt(variance/n)))
 
 ```
 
+# Potência do Teste
 
-# Amostragem
+A potência do teste é a probabilidade de rejeitar a hipótese nula quando, de fato, ela é nula.
+
+```{r image, echo=FALSE, fig.cap="Potência Estatística", out.width='80%', fig.align='center'}
+knitr::include_graphics("powertest.png")
+
+```
+Fonte: [link_imagem](https://www.researchgate.net/profile/Abdulkerim-Gok/publication/316927316/figure/fig3/AS:667699772391428@1536203439714/Left-Definitions-of-terminologies-in-a-statistical-test-Right-An-illustration-of-power.ppm)
+
+```{r power-stat}
+## Normal test
+# POPULAÇÃO / H1 [literatura/trabalhos anteriores]
+mu = 100
+sd = 4
+
+# AMOSTRA / H0 [levantamento em campo/laboratório]
+n = 10
+avg = 102
+avgerr = sd / sqrt(n)
+
+## POTÊNCIA DO TESTE (manualmente)
+# Distribuição H1 (população)
+alpha = .05
+tails = 1
+zp = qnorm(alpha/tails, mean = mu, sd = avgerr, lower.tail = FALSE )
+  
+# Distribuição H0 (amostra)
+beta = pnorm(zp, avg, avgerr)
+(power = 1 - beta)
+
+## FUNÇÃO DO R
+# T-Student test
+power.t.test(n = n, delta = avgerr, sd = sd, sig.level = alpha, alternative = "two.sided")
+power.t.test(power = .60, delta = .5, sd=2, sig.level = .1, alternative = "one.sided")
+```
+
+# Tamanho da amostra
 
 ## A partir da população
 
