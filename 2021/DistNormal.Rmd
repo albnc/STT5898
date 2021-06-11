@@ -120,7 +120,7 @@ qnorm(.90)
 qnorm(.5)
 ```
 
-  Encontrando o o p-valor com a função `pnorm(valor z, mean=0, sd=1)`.
+  Encontrando o p-valor com a função `pnorm(valor z, mean=0, sd=1)`.
   
   - Unicaudal a esquerda: $p-value = pnorm(z, lower.tail=TRUE)$;
   
