@@ -1,0 +1,127 @@
+---
+title: "STT5898"
+subtitle: "Estatística aplicada a Engenharia"
+author: "Prof. A. L. Cunha<br/>Profa. Cira Pitombo"
+institute: "USP-EESC-STT"
+date: "1/3/2024"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '4:3' #16:9
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+xaringanExtra::use_editable(expires = 1)
+xaringanExtra::use_panelset()
+
+```
+
+class: middle, bottom, inverse
+background-size: cover
+
+
+# Docentes 
+## STT5898
+
+
+---
+
+# Alunos
+
+```{r maps, echo=FALSE}
+library(dplyr)
+library(tidygeocoder)
+library(leaflet)
+
+df <- tribble(
+  ~nome, ~local,
+  "USP-EESC-STT", "Universidade de São Paulo - Campus/Área I, São Carlos, SP",
+  "Anáiram", "Belo Horizonte, MG",
+  "Anna Luiza", "Natal, RN",
+  "Arinilson","Ribeirão Preto, SP",
+  "Arthur","Maringá, PR",
+  "Crhistian","Vitória, ES",
+  "Danilo","Campo Grande, MS",
+  "Frederico","Belo Horizonte, MG",
+  "Dayana","Colômbia",
+  "Luiz Gustavo","Igaraçu do Tietê, SP",
+  "Luiz Henrique","São Luis, MA",
+  "Marcos Lobo","São Paulo, SP",
+  "Pedro Henrique","Vitória, ES",
+  
+)
+
+df <- df %>% 
+  geocode(local, method='osm')
+
+df %>% 
+  leaflet() %>%
+  addTiles() %>% 
+  addMarkers(~long, ~lat, label = ~as.character(nome))
+  
+
+```
+
+
+
+---
+# Programa resumido
+
+
+---
+
+# Programação
+
+
+
+---
+## Avaliação
+
+- Duas provas, nos dias **27/maio** e **29/julho**. 
+
+- A matéria da Prova 1 compreenderá os tópicos da Parte I; 
+
+- A matéria da Prova 2, da Parte II.
+
+- Lista de exercícios para cada tópico abordado no curso. 
+
+- A entrega destas listas de exercícios **é obrigatória**. 
+
+- Os alunos que não entregarem todas as listas de exercícios serão considerados **reprovados** no disciplina. 
+
+
+---
+# Aprovação
+
+- A nota mínima para **aprovação é 6,0**, sendo a nota final calculada por:
+
+$$NF = \frac{NP_1 + NP_2 + NP_3 + NP_4}{4}$$
+
+em que $NP_i$ é a nota parcial correspondente a parte de cada docente.
+
+A $NP_i$ é composta pela nota da prova e, a critério de cada docente, as listas e atividades realizadas em aula **podem servir de bonificação** a esta nota parcial.
+
+
+
+---
+# Bibliografia
+
+- E. K. Morlok (1978). Introduction to Transportation Engineering and Planning. McGraw-Hill Kogakusha, Tokyo. 
+
+- C. J. Khisty & B. K. Lall (2003). Transportation Engineering – An Introduction (3a. ed.). Prentice Hall.
+
+- C. S. Papacostas & P. D. Prevedouros (2001). Transportation Engineering & Planning (3a. ed.). Prentice Hall.
+
+- J.D. Ortúzar & L.G. Willumsen (2011). Modelling Transport (4a. ed.). Willey.
+
+- F.L. Manneing & S.S. Washburn (2013). Principles of Highway Engineering and Traffic Analysis (5a. ed.) Wiley.
+
+ 
+---
+

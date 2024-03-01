@@ -1,0 +1,148 @@
+---
+title: "STT5898"
+subtitle: "Estatística aplicada à Engenharia de Transportes"
+author: "Prof. André Luiz Cunha </br> Profa. Cira Pitombo"
+institute: "USP-EESC | PPG-ET"
+date: "1/mar/2024"
+format: 
+  revealjs:
+    #theme: beige
+    #theme: blood
+    #theme: dark
+    theme: default
+    #theme: league
+    #theme: moon
+    #theme: night
+    #theme: serif
+    #theme: simple
+    #theme: sky
+    #theme: solarized
+  
+---
+# Bem-vindos
+
+## Cobertura espacial
+
+```{r, echo=FALSE, error=FALSE, warning=FALSE, message=FALSE}
+library(dplyr)
+library(tidygeocoder)
+library(leaflet)
+
+df <- data.frame(
+  name = c("André Luiz Cunha", "Cira Pitombo"),
+  local = c("Campo Grande, MS", "Salvador, BA"),
+  color = c("red", "red")
+)
+
+#df <- rbind(df, c("Alberto", "São Carlos, SP", "blue"))
+# df <- rbind(df, c("Andressa", "São Carlos, SP", "blue"))
+# df <- rbind(df, c("Ellen", "São Carlos, SP", "blue"))
+#df <- rbind(df, c("Felipe", "Bauru, SP", "blue"))
+# df <- rbind(df, c("Fernando", "São Carlos, SP", "blue"))
+# df <- rbind(df, c("Gabriela", "São Carlos, SP", "blue"))
+# df <- rbind(df, c("João Pedro", "São Carlos, SP", "blue"))
+# df <- rbind(df, c("Maria Eduarda", "São Carlos, SP", "blue"))
+# df <- rbind(df, c("Mariana", "São Carlos, SP", "blue"))
+# df <- rbind(df, c("Rodrigo", "Curitiba, PR", "blue"))
+#df <- rbind(df, c("Sergio", "Salvador, BA", "blue"))
+# df <- rbind(df, c("Talita", "São Carlos, SP", "blue"))
+
+df <- df %>% 
+  geocode(local, method='osm')
+
+df %>% 
+  leaflet() %>%
+  addTiles() %>% 
+  #addMarkers(~long, ~lat, label = ~as.character(name))
+  addCircleMarkers(~long, ~lat, label = ~as.character(name), fillColor = ~color, 
+                   fillOpacity = 1, stroke = F)
+  
+```
+
+
+# Programação
+
+## Data e Local
+
+- Aulas às sexta-feiras das 9h ~ 12h
+- Anfiteatro e/ou LEI (Lab. Ensino Informatizado)
+- **Google Classroom**
+
+## Objetivos (1)
+
+- Aproximar o ensino de Estatística a problemas práticos na área de Transportes
+- Apresentar conceitos e técnicas inseridos em pesquisas
+- Assimilar a importância do uso da estatística como ferramenta de apoio
+- Compreender as ferramentas para análise de dados
+- Analisar elementos da **estatística descritiva** e **análise exploratória**
+
+## Objetivos (2)
+
+- Associar o uso de modelos probabilísticos e distribuições contínuas em pesquisas
+- Observar a importância de determinados testes e modelos para corroborar hipóteses de pesquisa
+- Apresentar pacotes estatísticos e base de dados
+
+
+## Programa Resumido
+
+- Estatística Básica
+- Medidas Descritivas
+- Probabilidades
+- Amostragem
+- Distribuições Normal e Binomial
+- Teste de hipótese
+- Estimação de parâmetros populacionais
+- Testes não paramétricos
+- Correlação e Regressão
+
+
+## Monitores
+
+- Valentina Carvalho Dias: <valentinacdias@usp.br>
+- Pedro Caliari: <pedro.caliari@usp.br>
+
+# Avaliação
+
+## 1) Atividades Pré-aula
+- Aprendizagem invertida (*just-in-time teaching*)
+- Formulários GoogleForms - **individual**
+
+
+## 2) Atividade em R
+- Banco de dados (BD) fornecido individualmente
+- Escolha de uma atividade pré-aula para aplicação no BD
+- Trabalho prático em R
+
+## 3) Prova
+- A ser realizada no dia **7/junho**
+
+
+## Aprovação
+
+A nota final é calculada por:
+
+$$NF = (0,2 \cdot N_{pre} + 0,2 \cdot N_{atvR} + 0,6 \cdot N_{prova})$$
+
+- $N_{pre}$ representa a média das atividades **Pré-aula**; 
+- $N_{atvR}$ a nota da **Atividade em R**; e 
+- $N_{prova}$ é a nota da **Prova**.
+
+
+# Bibliografia
+
+## Estatística
+
+- BARBETA, P.A. (2012) **Estatística aplicada às ciências sociais**, 8a ed., Florianópolis : Editora UFSC ([PDF](https://edisciplinas.usp.br/pluginfile.php/7652636/mod_resource/content/1/Barbetta%20-%20Estat%C3%ADstica%20aplicada%20%C3%A0s%20ci%C3%AAncias%20sociais%20%282010%29.pdf))
+
+- BARBETA, P.A. (2019) **Estatística aplicada às ciências sociais**, 9a ed., Florianópolis : Editora UFSC ([livro](https://livraria.ufsc.br/produto/712/estatistica-aplicada-as-ciencias-sociais-9-ed--3-reimpr-))
+
+- BARBETA, P.A.; REIS, M.M.; BORNA, A.C. (2010) **Estatística para cursos de Engenharia e Informática**, São Paulo : Editora Atlas. ([livro](https://www.amazon.com.br/Estat%C3%ADstica-Para-Cursos-Engenharia-Inform%C3%A1tica/dp/8522459940/ref=sr_1_2?dib=eyJ2IjoiMSJ9.kPGM48TyhbR8B7JRbXdnXDT3zijwxNPqrUNz1pXZYjnVhTba9NjcszLrQCoJmM2d.sOvtfF8Hw8oE04mV4dPiqBJ9yMApP-R0U9iJObMN8Wk&dib_tag=se&qid=1709263092&refinements=p_27%3APedro+Alberto+Barbetta&s=books&sr=1-2&text=Pedro+Alberto+Barbetta&ufe=app_do%3Aamzn1.fos.6a09f7ec-d911-4889-ad70-de8dd83c8a74))
+
+## Programação em R
+
+- LEEMIS, L. (2014) **Learning Base R**. ([link](https://www.math.wm.edu/~leemis/Rcode/))
+- DAMIANI, A.; et. al. (2022) **Ciências de Dados em R** ([link](https://livro.curso-r.com/index.html))
+- WICKHAM, H.; RUNDEL, M.C.; GROLEMUND, G. (2023) **R for Data Science**, 2nd edition. ([link](https://r4ds.hadley.nz/))
+- MATLOFF, N. (2011) **The art of R programming**, No Starch Press : San Francisco. ([link](https://diytranscriptomics.com/Reading/files/The%20Art%20of%20R%20Programming.pdf))
+- [Books RStudio](https://www.rstudio.com/resources/books/?authuser=0)
+
