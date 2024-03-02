@@ -34,18 +34,18 @@ df <- data.frame(
   color = c("red", "red")
 )
 
-#df <- rbind(df, c("Alberto", "São Carlos, SP", "blue"))
-# df <- rbind(df, c("Andressa", "São Carlos, SP", "blue"))
-# df <- rbind(df, c("Ellen", "São Carlos, SP", "blue"))
-#df <- rbind(df, c("Felipe", "Bauru, SP", "blue"))
-# df <- rbind(df, c("Fernando", "São Carlos, SP", "blue"))
-# df <- rbind(df, c("Gabriela", "São Carlos, SP", "blue"))
-# df <- rbind(df, c("João Pedro", "São Carlos, SP", "blue"))
-# df <- rbind(df, c("Maria Eduarda", "São Carlos, SP", "blue"))
-# df <- rbind(df, c("Mariana", "São Carlos, SP", "blue"))
-# df <- rbind(df, c("Rodrigo", "Curitiba, PR", "blue"))
-#df <- rbind(df, c("Sergio", "Salvador, BA", "blue"))
-# df <- rbind(df, c("Talita", "São Carlos, SP", "blue"))
+df <- rbind(df, c("Alberto", "Moçambique", "blue"))
+df <- rbind(df, c("Andressa", "Belo Horizonte, MG", "blue"))
+df <- rbind(df, c("Ellen", "São José dos Campos, SP", "blue"))
+df <- rbind(df, c("Felipe", "Bauru, SP", "blue"))
+df <- rbind(df, c("Fernando", "Macapá", "blue"))
+df <- rbind(df, c("Gabriela", "Blumenau, SC", "blue"))
+df <- rbind(df, c("João Pedro", "Mogi Mirim, SP", "blue"))
+df <- rbind(df, c("Maria Eduarda", "Rondonópolis, MT", "blue"))
+df <- rbind(df, c("Mariana", "São João da Boa Vista, SP", "blue"))
+df <- rbind(df, c("Rodrigo", "Curitiba, PR", "blue"))
+df <- rbind(df, c("Sergio", "Feira de Santana, BA", "blue"))
+df <- rbind(df, c("Talita", "São Carlos, SP", "blue"))
 
 df <- df %>% 
   geocode(local, method='osm')
@@ -64,7 +64,7 @@ df %>%
 
 ## Data e Local
 
-- Aulas às sexta-feiras das 9h ~ 12h
+- Aulas às sexta-feiras das 8h30 ~ 12h
 - Anfiteatro e/ou LEI (Lab. Ensino Informatizado)
 - **Google Classroom**
 
@@ -96,10 +96,10 @@ df %>%
 - Correlação e Regressão
 
 
-## Monitores
+## Monitor
 
 - Valentina Carvalho Dias: <valentinacdias@usp.br>
-- Pedro Caliari: <pedro.caliari@usp.br>
+
 
 # Avaliação
 
@@ -116,6 +116,9 @@ df %>%
 ## 3) Prova
 - A ser realizada no dia **7/junho**
 
+## Softwares
+- RStudio
+- Planilhas (Excel ou Google Sheets)
 
 ## Aprovação
 
