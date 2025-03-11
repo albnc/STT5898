@@ -29,23 +29,23 @@ library(tidygeocoder)
 library(leaflet)
 
 df <- data.frame(
-  name = c("André Luiz Cunha", "Cira Pitombo"),
+  name = c("prof. André Luiz Cunha", "profa. Cira Pitombo"),
   local = c("Campo Grande, MS", "Salvador, BA"),
   color = c("red", "red")
 )
 
-df <- rbind(df, c("Alberto", "Moçambique", "blue"))
-df <- rbind(df, c("Andressa", "Belo Horizonte, MG", "blue"))
-df <- rbind(df, c("Ellen", "São José dos Campos, SP", "blue"))
-df <- rbind(df, c("Felipe", "Bauru, SP", "blue"))
-df <- rbind(df, c("Fernando", "Macapá", "blue"))
-df <- rbind(df, c("Gabriela", "Blumenau, SC", "blue"))
-df <- rbind(df, c("João Pedro", "Mogi Mirim, SP", "blue"))
-df <- rbind(df, c("Maria Eduarda", "Rondonópolis, MT", "blue"))
-df <- rbind(df, c("Mariana", "São João da Boa Vista, SP", "blue"))
-df <- rbind(df, c("Rodrigo", "Curitiba, PR", "blue"))
-df <- rbind(df, c("Sergio", "Feira de Santana, BA", "blue"))
-df <- rbind(df, c("Talita", "São Carlos, SP", "blue"))
+df <- rbind(df, c("Alberto Junior", "Moçambique", "blue"))
+df <- rbind(df, c("Andressa Costa", "Belo Horizonte, MG", "blue"))
+df <- rbind(df, c("Ellen Santos", "São José dos Campos, SP", "blue"))
+df <- rbind(df, c("Felipe Pinto", "Bauru, SP", "blue"))
+df <- rbind(df, c("Fernando Carvalho", "Macapá", "blue"))
+df <- rbind(df, c("Gabriela Ribeiro", "Blumenau, SC", "blue"))
+df <- rbind(df, c("João Pedro Davoli", "Mogi Mirim, SP", "blue"))
+df <- rbind(df, c("Maria Eduarda Michelini", "Rondonópolis, MT", "blue"))
+df <- rbind(df, c("Mariana Sassaron", "São João da Boa Vista, SP", "blue"))
+df <- rbind(df, c("Rodrigo Oliveira", "Curitiba, PR", "blue"))
+df <- rbind(df, c("Sergio Jesus", "Feira de Santana, BA", "blue"))
+df <- rbind(df, c("Talita Capistrano", "São Carlos, SP", "blue"))
 
 df <- df %>% 
   geocode(local, method='osm')
@@ -112,9 +112,10 @@ df %>%
 - Banco de dados (BD) fornecido individualmente
 - Escolha de uma atividade pré-aula para aplicação no BD
 - Trabalho prático em R
+- Entrega: <span style="color:red;">**31/maio**</span>
 
 ## 3) Prova
-- A ser realizada no dia **7/junho**
+- A ser realizada no dia <span style="color:red;">**7/junho**</span>
 
 ## Softwares
 - RStudio
@@ -122,13 +123,13 @@ df %>%
 
 ## Aprovação
 
-A nota final é calculada por:
+Os conceitos *A*, *B* ou *C* representam níveis de aprovação, enquanto *R* é reprovado. O conceito é baseado na nota final dada por:
 
 $$NF = (0,2 \cdot N_{pre} + 0,2 \cdot N_{atvR} + 0,6 \cdot N_{prova})$$
 
-- $N_{pre}$ representa a média das atividades **Pré-aula**; 
-- $N_{atvR}$ a nota da **Atividade em R**; e 
-- $N_{prova}$ é a nota da **Prova**.
+- $N_{pre}$ representa a média das <span style="color:blue;">**Atividades Pré-aula**</span>; 
+- $N_{atvR}$ a nota da <span style="color:blue;">**Atividade em R**</span>; e 
+- $N_{prova}$ é a nota da <span style="color:green;">**Prova**</span>.
 
 
 # Bibliografia
