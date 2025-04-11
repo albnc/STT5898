@@ -5,8 +5,8 @@
 
 ---
 
-- [Aula 1 - Probabilidades](aula1-Probabilidade/README.md)
-- [Aula 2 - Distribuição Normal](aula2-DistNorm/README.md)
+- [Aula 1 - Probabilidades](aula1-Probabilidade/)
+- [Aula 2 - Distribuição Normal](aula2-DistNorm/)
 
 ---
 **Universidade de São Paulo** ([USP](https://www5.usp.br/))   
