@@ -2,9 +2,10 @@
 title: "Estatística Aplicada à <br/>Engenharia de Transportes"
 author: "Prof. André Luiz Cunha"
 format: 
-  revealjs:
-    theme: simple
-    chalkboard: true
+  gfm
+  #revealjs:
+   # theme: simple
+    #chalkboard: true
     #title-slide-attributes:
       #data-background-image: _imgs/capa.png
       #data-background-size: contain    

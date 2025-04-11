@@ -6,7 +6,7 @@
 ---
 
 - [Aula 1 - Probabilidades](aula1-Probabilidade/)
-- [Aula 2 - Distribuição Normal](aula2-DistNorm/)
+- [Aula 2 - Distribuição Normal](aula2-DistNorm/aula_normalidade_slides.md)
 
 ---
 **Universidade de São Paulo** ([USP](https://www5.usp.br/))   
