@@ -37,6 +37,13 @@ Informações da Disciplina
 8.	Regressão Linear Simples e Múltipla.
 
 
+
+---
+# Material
+
+[2025](2025/README.md)
+
+
 ---
 **Universidade de São Paulo** ([USP](https://www5.usp.br/))   
 **Escola de Engenharia de São Carlos** ([EESC](https://eesc.usp.br/))   
