@@ -2,7 +2,19 @@
 title: "Introdução ao R & Probabilidades"
 author: "prof. Andre Luiz Cunha"
 date: "2026-03-19"
-format: 
+
+latex-engine: lualatex
+fontsize: 11pt
+colorlinks: true
+mainfont: Candara
+lang: pt-br
+
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    geometry: margin=20mm
+
   gfm: 
     toc: true
     
