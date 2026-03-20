@@ -2,7 +2,10 @@
 title: "Introdução ao R & Probabilidades"
 author: "prof. Andre Luiz Cunha"
 date: "2026-03-19"
-format: gfm
+format: 
+  gfm: 
+    toc: true
+    
 ---
 
 ```{r setup, include=FALSE}

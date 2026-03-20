@@ -2,6 +2,20 @@
 prof. Andre Luiz Cunha
 2026-03-19
 
+- [Introdução ao R](#introdução-ao-r)
+  - [Instalação](#instalação)
+  - [Tipos de Dados](#tipos-de-dados)
+  - [Vector](#vector)
+- [List](#list)
+- [Data Frame](#data-frame)
+- [Probabilidades](#probabilidades)
+- [Exemplo 1 - Bagagens](#exemplo-1---bagagens)
+  - [Versão 1](#versão-1)
+  - [Versão 2](#versão-2)
+- [Exemplo 2 - Emissão](#exemplo-2---emissão)
+- [Exemplo 3 - Rodovias](#exemplo-3---rodovias)
+- [Exemplo 4 - Globo](#exemplo-4---globo)
+
 ## Introdução ao R
 
 ### Instalação
